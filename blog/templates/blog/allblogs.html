@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -25,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="#">Twitter</a>
-            <a class="nav-item nav-link" href="#">Resume</a>
+            <a class="nav-item nav-link" href="{% static 'john.jpg' %}" target="blank">Resume</a>
             <a class="nav-item nav-link active" href="#">Blog</a>
           </div>
         </div>
@@ -38,12 +39,12 @@
               <h2 class="pt-5">Latest posts</h2>
               <hr>
               {% for allblogs in allblogs.all %}
-              <h3 class="text-center pt-3">{{ allblogs.title }}</h3>
-              <div class="text-center pt-3">
-                <img class="img-fluid rounded" src="{{ allblogs.image.url }}" >
+              <a href=""><h3 class="text-center pt-3">{{ allblogs.title }}</h3></a>
+              <div class="pt-3">
+                <img class="img-fluid rounded" src="{{ allblogs.image.url }}" width="200">
               </div>
-              <p class="pt-2">{{ allblogs.body }}</p>
-              <p>{{ allblogs.pub_date }}</p>
+              <p class="pt-2">{{ allblogs.summary }}</p>
+              <p>{{ allblogs.pub_date_pretty }}</p>
               {% endfor %}
       </div>
     </main>
