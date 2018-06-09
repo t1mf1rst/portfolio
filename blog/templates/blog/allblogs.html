@@ -26,42 +26,26 @@
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="#">Twitter</a>
             <a class="nav-item nav-link" href="#">Resume</a>
-            <a class="nav-item nav-link" href="#">Blog</a>
+            <a class="nav-item nav-link active" href="#">Blog</a>
           </div>
         </div>
       </nav>
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Tim First</h1>
-          <p class="lead text-muted">Hello, I'm professional full stack web developer. I really love python and django!</p>
-          <p>
-            <a href="mailto:test@mail.com" class="btn btn-primary">Main call to action</a>
-          </p>
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-            {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="{{ job.image.url }}">
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary }}</p>
-                </div>
+      <div class="container">
+              <h1 class="text-center pt-5">Welcome to Tim's Blog</h1>
+              <h2 class="pt-5">Latest posts</h2>
+              <hr>
+              {% for allblogs in allblogs.all %}
+              <h3 class="text-center pt-3">{{ allblogs.title }}</h3>
+              <div class="text-center pt-3">
+                <img class="img-fluid rounded" src="{{ allblogs.image.url }}" >
               </div>
-            </div>
-            {% endfor %}
-
-          </div>
-        </div>
+              <p class="pt-2">{{ allblogs.body }}</p>
+              <p>{{ allblogs.pub_date }}</p>
+              {% endfor %}
       </div>
-
     </main>
 
     <footer class="text-muted">
