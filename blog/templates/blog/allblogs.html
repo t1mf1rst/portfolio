@@ -19,15 +19,15 @@
 
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Tim First</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Tim First</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#">Twitter</a>
+            <a class="nav-item nav-link" href="http://twitter.com" target="blank">Twitter</a>
             <a class="nav-item nav-link" href="{% static 'john.jpg' %}" target="blank">Resume</a>
-            <a class="nav-item nav-link active" href="#">Blog</a>
+            <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
           </div>
         </div>
       </nav>
@@ -39,7 +39,7 @@
               <h2 class="pt-5">Latest posts</h2>
               <hr>
               {% for allblogs in allblogs.all %}
-              <a href=""><h3 class="text-center pt-3">{{ allblogs.title }}</h3></a>
+              <a href="{% url 'detail' allblogs.id %}" style="color: black;"><h3 class="text-center pt-3">{{ allblogs.title }}</h3></a>
               <div class="pt-3">
                 <img class="img-fluid rounded" src="{{ allblogs.image.url }}" width="200">
               </div>
